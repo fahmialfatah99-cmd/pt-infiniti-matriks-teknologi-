@@ -1,0 +1,12 @@
+pt-infiniti-matriks-teknologi/
+├── PROJECT_BRIEF.md      <-- (Wajib ada, ini panduan utama untuk AI)
+├── index.html            <-- (File utama)
+── assets/
+│   ├── images/           <-- (Logo, foto tim, background)
+│   └── icons/            <-- (SVG icons)
+├── css/
+│   └── custom.css        <-- (Custom animations & overrides)
+├── js/
+│   ├── main.js           <-- (Logic utama, dark mode, scroll)
+│   └── components.js     <-- (Jika ada komponen dinamis)
+── README.md             <-- (Dokumentasi standar GitHub)
