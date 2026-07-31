@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT Infiniti Matriks Teknologi | FTTH Network Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0ea5e9',
+                        secondary: '#0284c7',
+                        dark: '#0f172a',
+                        darker: '#020617'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #020617; color: #f8fafc; font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); }
+        .gradient-text { background: linear-gradient(90deg, #0ea5e9, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glow { box-shadow: 0 0 20px rgba(14, 165, 233, 0.3); }
+        .bg-grid { background-image: radial-gradient(circle, rgba(14,165,233,0.15) 1px, transparent 1px); background-size: 30px 30px; }
+    </style>
+</head>
+<body class="bg-grid">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold gradient-text">Infiniti Matriks</h1>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+                <a href="#home" class="hover:text-primary transition">Home</a>
+                <a href="#services" class="hover:text-primary transition">Layanan</a>
+                <a href="#about" class="hover:text-primary transition">Tentang</a>
+                <a href="#contact" class="hover:text-primary transition">Kontak</a>
+            </div>
+            <button class="md:hidden text-xl"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <div class="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent"></div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <span class="inline-block px-4 py-1 mb-6 text-xs font-semibold tracking-wider text-primary border border-primary/30 rounded-full glass">FTTH NETWORK EXPERTS</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                Menghubungkan Masa Depan dengan <span class="gradient-text">Jaringan Fiber Optik</span> Terdepan
+            </h1>
+            <p class="text-lg text-slate-400 mb-8 max-w-2xl mx-auto">
+                PT Infiniti Matriks Teknologi menyediakan solusi infrastruktur FTTH berkecepatan tinggi, andal, dan skalabel untuk kebutuhan residensial maupun komersial.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#contact" class="px-8 py-3 bg-primary hover:bg-secondary text-white font-semibold rounded-lg glow transition transform hover:scale-105">Mulai Proyek</a>
+                <a href="#services" class="px-8 py-3 border border-slate-700 hover:border-primary text-slate-300 font-semibold rounded-lg transition">Lihat Layanan</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Layanan <span class="gradient-text">Unggulan</span></h2>
+                <p class="text-slate-400">Solusi jaringan end-to-end untuk konektivitas tanpa batas.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="p-8 glass rounded-2xl hover:border-primary/50 transition group">
+                    <div class="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-lg mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-network-wired text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Instalasi FTTH</h3>
+                    <p class="text-slate-400 text-sm">Pemasangan infrastruktur Fiber To The Home dengan standar internasional untuk kecepatan maksimal.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="p-8 glass rounded-2xl hover:border-primary/50 transition group">
+                    <div class="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-lg mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Maintenance & Support</h3>
+                    <p class="text-slate-400 text-sm">Pemeliharaan jaringan proaktif dan dukungan teknis 24/7 untuk memastikan uptime 99.9%.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="p-8 glass rounded-2xl hover:border-primary/50 transition group">
+                    <div class="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-lg mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-drafting-compass text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Network Design</h3>
+                    <p class="text-slate-400 text-sm">Perencanaan arsitektur jaringan yang skalabel, efisien, dan disesuaikan dengan topologi area.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="border-t border-slate-800 py-12 mt-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold gradient-text mb-4">PT Infiniti Matriks Teknologi</h2>
+            <p class="text-slate-500 text-sm mb-6">Membangun infrastruktur digital untuk Indonesia yang lebih terhubung.</p>
+            <div class="flex justify-center space-x-6 text-slate-400 mb-8">
+                <a href="#" class="hover:text-primary transition"><i class="fab fa-linkedin text-xl"></i></a>
+                <a href="#" class="hover:text-primary transition"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="#" class="hover:text-primary transition"><i class="fas fa-envelope text-xl"></i></a>
+            </div>
+            <p class="text-slate-600 text-xs">&copy; 2024 PT Infiniti Matriks Teknologi. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
