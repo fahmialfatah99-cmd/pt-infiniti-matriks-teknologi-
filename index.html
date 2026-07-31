@@ -13,8 +13,8 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#0ea5e9',
-                        secondary: '#0284c7',
+                        primary: '#3b82f6',
+                        secondary: '#1d4ed8',
                         accent: '#06b6d4',
                         dark: '#0f172a',
                         darker: '#020617'
@@ -25,7 +25,8 @@
                     animation: {
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'float': 'float 6s ease-in-out infinite',
-                        'glow': 'glow 2s ease-in-out infinite alternate'
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'shimmer': 'shimmer 2s linear infinite'
                     },
                     keyframes: {
                         float: {
@@ -33,8 +34,12 @@
                             '50%': { transform: 'translateY(-20px)' }
                         },
                         glow: {
-                            'from': { boxShadow: '0 0 20px rgba(14, 165, 233, 0.3)' },
-                            'to': { boxShadow: '0 0 40px rgba(14, 165, 233, 0.6)' }
+                            'from': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)' },
+                            'to': { boxShadow: '0 0 40px rgba(59, 130, 246, 0.6)' }
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-1000px 0' },
+                            '100%': { backgroundPosition: '1000px 0' }
                         }
                     }
                 }
@@ -44,59 +49,77 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            background-color: #020617; 
+            background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
             color: #f8fafc; 
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
         
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #0ea5e9; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #0284c7; }
+        ::-webkit-scrollbar-thumb { 
+            background: linear-gradient(180deg, #3b82f6, #1d4ed8); 
+            border-radius: 10px; 
+        }
+        ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #2563eb, #1e40af); }
         
-        /* Glassmorphism */
+        /* Glassmorphism - Enhanced */
         .glass { 
-            background: rgba(15, 23, 42, 0.7); 
-            backdrop-filter: blur(12px); 
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.08); 
+            background: rgba(30, 41, 59, 0.6); 
+            backdrop-filter: blur(20px) saturate(180%); 
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
         .glass-light { 
-            background: rgba(30, 41, 59, 0.5); 
-            backdrop-filter: blur(10px); 
-            border: 1px solid rgba(255,255,255,0.05); 
+            background: rgba(51, 65, 85, 0.4); 
+            backdrop-filter: blur(16px) saturate(160%); 
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
         }
         
-        /* Gradient Text */
+        /* Gradient Text - Enhanced */
         .gradient-text { 
-            background: linear-gradient(135deg, #0ea5e9, #06b6d4, #38bdf8); 
+            background: linear-gradient(135deg, #60a5fa, #3b82f6, #2563eb, #06b6d4); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            background-size: 300% 300%;
+            animation: shimmer 3s ease-in-out infinite;
         }
         .gradient-text-alt {
-            background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #a855f7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            background-size: 200% 200%;
+            animation: shimmer 4s ease-in-out infinite;
         }
         
-        /* Glow Effects */
-        .glow { box-shadow: 0 0 20px rgba(14, 165, 233, 0.3); }
-        .glow-strong { box-shadow: 0 0 40px rgba(14, 165, 233, 0.5); }
+        /* Glow Effects - Enhanced */
+        .glow { 
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.4), 
+                        0 0 60px rgba(59, 130, 246, 0.2),
+                        inset 0 0 20px rgba(59, 130, 246, 0.1);
+        }
+        .glow-strong { 
+            box-shadow: 0 0 50px rgba(59, 130, 246, 0.6), 
+                        0 0 100px rgba(59, 130, 246, 0.3),
+                        inset 0 0 30px rgba(59, 130, 246, 0.15);
+        }
         
-        /* Background Grid Pattern */
+        /* Background Grid Pattern - Enhanced */
         .bg-grid { 
             background-image: 
-                radial-gradient(circle at 1px 1px, rgba(14,165,233,0.15) 1px, transparent 0),
-                radial-gradient(circle at 1px 1px, rgba(6,182,212,0.1) 1px, transparent 0);
-            background-size: 40px 40px, 80px 80px;
-            background-position: 0 0, 20px 20px;
+                linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+                radial-gradient(circle at 1px 1px, rgba(59,130,246,0.15) 1px, transparent 0);
+            background-size: 50px 50px, 50px 50px, 40px 40px;
+            background-position: 0 0, 0 0, 20px 20px;
         }
         
-        /* Fiber Animation Background */
+        /* Fiber Animation Background - Enhanced */
         .fiber-bg {
             position: absolute;
             top: 0;
@@ -108,10 +131,11 @@
         }
         .fiber-line {
             position: absolute;
-            width: 2px;
+            width: 3px;
             height: 100%;
-            background: linear-gradient(to bottom, transparent, rgba(14, 165, 233, 0.3), transparent);
+            background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.5), rgba(96, 165, 250, 0.8), transparent);
             animation: fiberFlow 3s linear infinite;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
         }
         @keyframes fiberFlow {
             0% { transform: translateY(-100%); opacity: 0; }
@@ -119,20 +143,21 @@
             100% { transform: translateY(100%); opacity: 0; }
         }
         
-        /* Particle Effect */
+        /* Particle Effect - Enhanced */
         .particle {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #0ea5e9;
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, #60a5fa, #3b82f6);
             border-radius: 50%;
             animation: particleFloat 15s infinite;
-            opacity: 0.6;
+            opacity: 0.8;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 40px rgba(59, 130, 246, 0.4);
         }
         @keyframes particleFloat {
             0%, 100% { transform: translate(0, 0); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
             100% { transform: translate(100px, -100vh); opacity: 0; }
         }
         
@@ -147,25 +172,59 @@
             transform: translateY(0);
         }
         
-        /* Card Hover Effects */
+        /* Card Hover Effects - Enhanced */
         .service-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        .service-card:hover::before {
+            left: 100%;
         }
         .service-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(14, 165, 233, 0.5);
-            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.2);
+            transform: translateY(-15px) scale(1.02);
+            border-color: rgba(59, 130, 246, 0.6);
+            box-shadow: 0 25px 50px rgba(59, 130, 246, 0.25),
+                        0 0 40px rgba(59, 130, 246, 0.15),
+                        inset 0 0 20px rgba(59, 130, 246, 0.05);
         }
         
-        /* Button Styles */
+        /* Button Styles - Enhanced */
         .btn-primary {
-            background: linear-gradient(135deg, #0ea5e9, #0284c7);
-            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #3b82f6, #2563eb, #1d4ed8);
+            background-size: 200% 200%;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        .btn-primary:hover::before {
+            left: 100%;
         }
         .btn-primary:hover {
-            background: linear-gradient(135deg, #0284c7, #0369a1);
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.4);
+            background: linear-gradient(135deg, #2563eb, #1d4ed8, #1e40af);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.5),
+                        0 0 30px rgba(59, 130, 246, 0.3);
         }
         
         /* Stats Counter Animation */
@@ -204,38 +263,43 @@
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center space-x-3 group">
-                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center glow group-hover:glow-strong transition">
-                    <i data-lucide="zap" class="text-white w-6 h-6"></i>
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary via-blue-500 to-accent flex items-center justify-center glow group-hover:glow-strong transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-3">
+                    <i data-lucide="zap" class="text-white w-7 h-7"></i>
                 </div>
                 <div>
-                    <h1 class="text-xl font-bold gradient-text">Infiniti Matriks</h1>
-                    <p class="text-xs text-slate-400">FTTH Solutions</p>
+                    <h1 class="text-2xl font-bold gradient-text tracking-tight">Infiniti Matriks</h1>
+                    <p class="text-xs text-slate-400 font-medium">FTTH Network Solutions</p>
                 </div>
             </a>
             
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center space-x-8">
-                <a href="#home" class="text-sm font-medium text-slate-300 hover:text-primary transition flex items-center gap-2">
-                    <i data-lucide="home" class="w-4 h-4"></i>
+                <a href="#home" class="group text-sm font-medium text-slate-300 hover:text-primary transition-all flex items-center gap-2 relative">
+                    <i data-lucide="home" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
                     Home
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300"></span>
                 </a>
-                <a href="#services" class="text-sm font-medium text-slate-300 hover:text-primary transition flex items-center gap-2">
-                    <i data-lucide="layers" class="w-4 h-4"></i>
+                <a href="#services" class="group text-sm font-medium text-slate-300 hover:text-primary transition-all flex items-center gap-2 relative">
+                    <i data-lucide="layers" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
                     Layanan
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300"></span>
                 </a>
-                <a href="#about" class="text-sm font-medium text-slate-300 hover:text-primary transition flex items-center gap-2">
-                    <i data-lucide="building" class="w-4 h-4"></i>
+                <a href="#about" class="group text-sm font-medium text-slate-300 hover:text-primary transition-all flex items-center gap-2 relative">
+                    <i data-lucide="building" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
                     Tentang
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300"></span>
                 </a>
-                <a href="#why-us" class="text-sm font-medium text-slate-300 hover:text-primary transition flex items-center gap-2">
-                    <i data-lucide="star" class="w-4 h-4"></i>
+                <a href="#why-us" class="group text-sm font-medium text-slate-300 hover:text-primary transition-all flex items-center gap-2 relative">
+                    <i data-lucide="star" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
                     Keunggulan
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300"></span>
                 </a>
-                <a href="#contact" class="text-sm font-medium text-slate-300 hover:text-primary transition flex items-center gap-2">
-                    <i data-lucide="mail" class="w-4 h-4"></i>
+                <a href="#contact" class="group text-sm font-medium text-slate-300 hover:text-primary transition-all flex items-center gap-2 relative">
+                    <i data-lucide="mail" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
                     Kontak
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300"></span>
                 </a>
-                <a href="#contact" class="px-6 py-2 btn-primary text-white text-sm font-semibold rounded-lg">
+                <a href="#contact" class="px-7 py-2.5 btn-primary text-white text-sm font-semibold rounded-xl shadow-lg hover:shadow-xl">
                     Hubungi Kami
                 </a>
             </div>
@@ -280,64 +344,71 @@
 
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-        <div class="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent"></div>
-        <!-- Animated Orb Background -->
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1.5s;"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-primary/15 via-blue-900/10 to-transparent"></div>
+        <!-- Animated Orb Background - Enhanced -->
+        <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[100px] animate-pulse-slow"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-cyan-500/15 rounded-full blur-[100px] animate-pulse-slow" style="animation-delay: 1.5s;"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[120px] animate-pulse-slow" style="animation-delay: 3s;"></div>
         
-        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+        <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
             <div class="fade-up">
-                <span class="inline-flex items-center gap-2 px-5 py-2 mb-8 text-xs font-semibold tracking-wider text-primary border border-primary/30 rounded-full glass glow">
-                    <i data-lucide="radio" class="w-3 h-3"></i>
+                <span class="inline-flex items-center gap-2 px-6 py-3 mb-10 text-xs font-bold tracking-widest text-blue-300 border border-blue-400/40 rounded-full glass glow animate-pulse">
+                    <i data-lucide="radio" class="w-4 h-4"></i>
                     FTTH NETWORK EXPERTS
                 </span>
             </div>
             
-            <h1 class="fade-up text-5xl md:text-7xl font-extrabold mb-8 leading-tight" style="transition-delay: 0.1s;">
+            <h1 class="fade-up text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight tracking-tight" style="transition-delay: 0.1s;">
                 Menghubungkan Masa Depan dengan<br>
-                <span class="gradient-text">Jaringan Fiber Optik</span> Terdepan
+                <span class="gradient-text block mt-2">Jaringan Fiber Optik</span> Terdepan
             </h1>
             
-            <p class="fade-up text-lg md:text-xl text-slate-400 mb-10 max-w-3xl mx-auto" style="transition-delay: 0.2s;">
+            <p class="fade-up text-xl md:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed" style="transition-delay: 0.2s;">
                 PT Infiniti Matriks Teknologi menyediakan solusi infrastruktur FTTH berkecepatan tinggi, 
                 andal, dan skalabel untuk kebutuhan residensial maupun komersial di seluruh Indonesia.
             </p>
             
-            <div class="fade-up flex flex-col sm:flex-row gap-5 justify-center items-center" style="transition-delay: 0.3s;">
-                <a href="#contact" class="group px-10 py-4 btn-primary text-white font-bold rounded-xl flex items-center gap-3">
-                    <i data-lucide="rocket" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+            <div class="fade-up flex flex-col sm:flex-row gap-6 justify-center items-center" style="transition-delay: 0.3s;">
+                <a href="#contact" class="group px-12 py-5 btn-primary text-white font-bold rounded-2xl flex items-center gap-3 text-lg shadow-2xl">
+                    <i data-lucide="rocket" class="w-6 h-6 group-hover:translate-x-1 transition-transform"></i>
                     Mulai Proyek
                 </a>
-                <a href="#services" class="px-10 py-4 border border-slate-700 hover:border-primary text-slate-300 hover:text-white font-bold rounded-xl transition flex items-center gap-3 glass-light hover:bg-primary/10">
-                    <i data-lucide="layers" class="w-5 h-5"></i>
+                <a href="#services" class="px-12 py-5 border-2 border-slate-600 hover:border-primary text-slate-200 hover:text-white font-bold rounded-2xl transition-all duration-300 flex items-center gap-3 glass-light hover:bg-primary/20 text-lg hover:scale-105">
+                    <i data-lucide="layers" class="w-6 h-6"></i>
                     Lihat Layanan
                 </a>
             </div>
             
             <!-- Stats Preview -->
-            <div class="fade-up mt-20 grid grid-cols-2 md:grid-cols-4 gap-8" style="transition-delay: 0.4s;">
-                <div class="text-center">
-                    <div class="text-3xl md:text-4xl font-bold gradient-text stat-number" data-target="150">0</div>
-                    <div class="text-sm text-slate-500 mt-1">Proyek Selesai</div>
+            <div class="fade-up mt-24 grid grid-cols-2 md:grid-cols-4 gap-10" style="transition-delay: 0.4s;">
+                <div class="text-center group">
+                    <div class="text-4xl md:text-5xl font-black gradient-text stat-number mb-2 group-hover:scale-110 transition-transform duration-300" data-target="150">0</div>
+                    <div class="text-sm text-slate-400 font-medium uppercase tracking-wider">Proyek Selesai</div>
+                    <div class="w-16 h-1 bg-gradient-to-r from-primary to-accent mx-auto mt-3 rounded-full"></div>
                 </div>
-                <div class="text-center">
-                    <div class="text-3xl md:text-4xl font-bold gradient-text stat-number" data-target="50">0</div>
-                    <div class="text-sm text-slate-500 mt-1">Kota Terjangkau</div>
+                <div class="text-center group">
+                    <div class="text-4xl md:text-5xl font-black gradient-text stat-number mb-2 group-hover:scale-110 transition-transform duration-300" data-target="50">0</div>
+                    <div class="text-sm text-slate-400 font-medium uppercase tracking-wider">Kota Terjangkau</div>
+                    <div class="w-16 h-1 bg-gradient-to-r from-primary to-accent mx-auto mt-3 rounded-full"></div>
                 </div>
-                <div class="text-center">
-                    <div class="text-3xl md:text-4xl font-bold gradient-text stat-number" data-target="99">0%</div>
-                    <div class="text-sm text-slate-500 mt-1">Uptime Garansi</div>
+                <div class="text-center group">
+                    <div class="text-4xl md:text-5xl font-black gradient-text stat-number mb-2 group-hover:scale-110 transition-transform duration-300" data-target="99">0%</div>
+                    <div class="text-sm text-slate-400 font-medium uppercase tracking-wider">Uptime Garansi</div>
+                    <div class="w-16 h-1 bg-gradient-to-r from-primary to-accent mx-auto mt-3 rounded-full"></div>
                 </div>
-                <div class="text-center">
-                    <div class="text-3xl md:text-4xl font-bold gradient-text stat-number" data-target="24">0</div>
-                    <div class="text-sm text-slate-500 mt-1">Support Jam/Hari</div>
+                <div class="text-center group">
+                    <div class="text-4xl md:text-5xl font-black gradient-text stat-number mb-2 group-hover:scale-110 transition-transform duration-300" data-target="24">0</div>
+                    <div class="text-sm text-slate-400 font-medium uppercase tracking-wider">Support Jam/Hari</div>
+                    <div class="w-16 h-1 bg-gradient-to-r from-primary to-accent mx-auto mt-3 rounded-full"></div>
                 </div>
             </div>
         </div>
         
-        <!-- Scroll Indicator -->
+        <!-- Scroll Indicator - Enhanced -->
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i data-lucide="chevron-down" class="w-8 h-8 text-primary/60"></i>
+            <div class="w-8 h-14 border-2 border-primary/50 rounded-full flex justify-center pt-2">
+                <div class="w-2 h-3 bg-primary rounded-full animate-ping"></div>
+            </div>
         </div>
     </section>
 
@@ -345,11 +416,11 @@
     <section id="services" class="py-32 relative">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-20 fade-up">
-                <span class="inline-block px-4 py-2 mb-4 text-xs font-semibold text-accent border border-accent/30 rounded-full glass">
+                <span class="inline-block px-5 py-2.5 mb-6 text-xs font-bold tracking-widest text-accent border border-accent/40 rounded-full glass glow">
                     LAYANAN KAMI
                 </span>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Solusi <span class="gradient-text">Unggulan</span></h2>
-                <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+                <h2 class="text-4xl md:text-6xl font-black mb-6 tracking-tight">Solusi <span class="gradient-text">Unggulan</span></h2>
+                <p class="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
                     Kami menyediakan layanan end-to-end untuk membangun infrastruktur jaringan fiber optik 
                     yang handal dan berkinerja tinggi.
                 </p>
@@ -357,104 +428,104 @@
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Card 1 -->
-                <div class="service-card p-8 glass rounded-2xl fade-up group cursor-pointer">
-                    <div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-primary/20 to-accent/20 text-primary rounded-xl mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                        <i data-lucide="network" class="w-8 h-8"></i>
+                <div class="service-card p-10 glass rounded-3xl fade-up group cursor-pointer">
+                    <div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-blue-500/30 to-cyan-500/30 text-blue-400 rounded-2xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                        <i data-lucide="network" class="w-10 h-10"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-white">Instalasi FTTH</h3>
                     <p class="text-slate-400 mb-6 leading-relaxed">
                         Pemasangan infrastruktur Fiber To The Home dengan standar internasional, 
                         menggunakan peralatan terkini untuk memastikan kecepatan dan stabilitas maksimal.
                     </p>
-                    <ul class="space-y-2 text-sm text-slate-500">
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary"></i>Survey lokasi gratis</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary"></i>Instalasi profesional</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary"></i>Testing & commissioning</li>
+                    <ul class="space-y-3 text-sm text-slate-500">
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>Survey lokasi gratis</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>Instalasi profesional</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>Testing & commissioning</li>
                     </ul>
                 </div>
                 
                 <!-- Card 2 -->
-                <div class="service-card p-8 glass rounded-2xl fade-up group cursor-pointer" style="transition-delay: 0.1s;">
-                    <div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-primary/20 to-accent/20 text-primary rounded-xl mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                        <i data-lucide="shield-check" class="w-8 h-8"></i>
+                <div class="service-card p-10 glass rounded-3xl fade-up group cursor-pointer" style="transition-delay: 0.1s;">
+                    <div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-blue-500/30 to-cyan-500/30 text-blue-400 rounded-2xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                        <i data-lucide="shield-check" class="w-10 h-10"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-white">Maintenance & Support</h3>
                     <p class="text-slate-400 mb-6 leading-relaxed">
                         Pemeliharaan jaringan proaktif dengan monitoring 24/7 dan dukungan teknis cepat 
                         untuk memastikan uptime jaringan mencapai 99.9%.
                     </p>
-                    <ul class="space-y-2 text-sm text-slate-500">
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary"></i>Monitoring real-time</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary"></i>Preventive maintenance</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary"></i>Emergency response</li>
+                    <ul class="space-y-3 text-sm text-slate-500">
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>Monitoring real-time</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>Preventive maintenance</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>Emergency response</li>
                     </ul>
                 </div>
                 
                 <!-- Card 3 -->
-                <div class="service-card p-8 glass rounded-2xl fade-up group cursor-pointer" style="transition-delay: 0.2s;">
-                    <div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-primary/20 to-accent/20 text-primary rounded-xl mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                        <i data-lucide="compass" class="w-8 h-8"></i>
+                <div class="service-card p-10 glass rounded-3xl fade-up group cursor-pointer" style="transition-delay: 0.2s;">
+                    <div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-blue-500/30 to-cyan-500/30 text-blue-400 rounded-2xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                        <i data-lucide="compass" class="w-10 h-10"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-white">Network Design</h3>
                     <p class="text-slate-400 mb-6 leading-relaxed">
                         Perencanaan arsitektur jaringan yang skalabel, efisien biaya, dan disesuaikan 
                         dengan topografi serta kebutuhan spesifik area Anda.
                     </p>
-                    <ul class="space-y-2 text-sm text-slate-500">
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary"></i>Feasibility study</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary"></i>Detailed engineering</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary"></i>BOQ preparation</li>
+                    <ul class="space-y-3 text-sm text-slate-500">
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>Feasibility study</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>Detailed engineering</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>BOQ preparation</li>
                     </ul>
                 </div>
                 
                 <!-- Card 4 -->
-                <div class="service-card p-8 glass rounded-2xl fade-up group cursor-pointer" style="transition-delay: 0.3s;">
-                    <div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-primary/20 to-accent/20 text-primary rounded-xl mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                        <i data-lucide="cable" class="w-8 h-8"></i>
+                <div class="service-card p-10 glass rounded-3xl fade-up group cursor-pointer" style="transition-delay: 0.3s;">
+                    <div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-blue-500/30 to-cyan-500/30 text-blue-400 rounded-2xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                        <i data-lucide="cable" class="w-10 h-10"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-white">Fiber Splicing</h3>
                     <p class="text-slate-400 mb-6 leading-relaxed">
                         Layanan penyambungan fiber optik dengan presisi tinggi menggunakan mesin splicing 
                         terbaru untuk loss yang minimal dan konektivitas optimal.
                     </p>
-                    <ul class="space-y-2 text-sm text-slate-500">
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary"></i>Fusion splicing</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary"></i>OTDR testing</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary"></i>Documentation</li>
+                    <ul class="space-y-3 text-sm text-slate-500">
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>Fusion splicing</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>OTDR testing</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>Documentation</li>
                     </ul>
                 </div>
                 
                 <!-- Card 5 -->
-                <div class="service-card p-8 glass rounded-2xl fade-up group cursor-pointer" style="transition-delay: 0.4s;">
-                    <div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-primary/20 to-accent/20 text-primary rounded-xl mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                        <i data-lucide="circle-help" class="w-8 h-8"></i>
+                <div class="service-card p-10 glass rounded-3xl fade-up group cursor-pointer" style="transition-delay: 0.4s;">
+                    <div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-blue-500/30 to-cyan-500/30 text-blue-400 rounded-2xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                        <i data-lucide="circle-help" class="w-10 h-10"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-white">Network Audit</h3>
                     <p class="text-slate-400 mb-6 leading-relaxed">
                         Evaluasi menyeluruh terhadap infrastruktur jaringan existing untuk mengidentifikasi 
                         masalah, bottleneck, dan rekomendasi improvement.
                     </p>
-                    <ul class="space-y-2 text-sm text-slate-500">
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary"></i>Performance analysis</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary"></i>Security assessment</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary"></i>Optimization plan</li>
+                    <ul class="space-y-3 text-sm text-slate-500">
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>Performance analysis</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>Security assessment</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>Optimization plan</li>
                     </ul>
                 </div>
                 
                 <!-- Card 6 -->
-                <div class="service-card p-8 glass rounded-2xl fade-up group cursor-pointer" style="transition-delay: 0.5s;">
-                    <div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-primary/20 to-accent/20 text-primary rounded-xl mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                        <i data-lucide="users" class="w-8 h-8"></i>
+                <div class="service-card p-10 glass rounded-3xl fade-up group cursor-pointer" style="transition-delay: 0.5s;">
+                    <div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-blue-500/30 to-cyan-500/30 text-blue-400 rounded-2xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                        <i data-lucide="users" class="w-10 h-10"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-white">Training & Consulting</h3>
                     <p class="text-slate-400 mb-6 leading-relaxed">
                         Program pelatihan dan konsultasi untuk tim teknis Anda dalam mengelola dan 
                         memelihara infrastruktur fiber optik secara mandiri.
                     </p>
-                    <ul class="space-y-2 text-sm text-slate-500">
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary"></i>Technical training</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary"></i>Best practices</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary"></i>Certification support</li>
+                    <ul class="space-y-3 text-sm text-slate-500">
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>Technical training</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>Best practices</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>Certification support</li>
                     </ul>
                 </div>
             </div>
